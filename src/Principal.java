@@ -16,7 +16,7 @@ public class Principal {
 
 
         String direccion = "https://v6.exchangerate-api.com/v6/1613320cb33d3232e8626ef6/pair/" + monedaUno + "/" + monedaDos + "/" + monto;
-        System.out.println("PRUEBA");
+        System.out.println("PRUEba");
 
 
 
