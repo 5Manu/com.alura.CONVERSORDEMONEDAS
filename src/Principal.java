@@ -1,23 +1,48 @@
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class Principal {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
+
+
+
 
         Scanner scanner = new Scanner(System.in);
-
-
-
         System.out.println("Por favor ingresa tu moneda principal");
-        String monedaUno = scanner.nextLine();
+        String monedaUno = scanner.nextLine().toUpperCase();
         System.out.println("por favor ingresa tu moneda a convertir");
-        String monedaDos = scanner.nextLine();
+         String monedaDos = scanner.nextLine().toUpperCase();
         System.out.println("Por favor ingresa el monto que deseas convertir");
         int monto = scanner.nextInt();
 
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://v6.exchangerate-api.com/v6/1613320cb33d3232e8626ef6/pair/" +monedaUno + "/" + monedaDos + "/" + monto))
+                .build();
+        HttpResponse<String> response = client
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
-        String direccion = "https://v6.exchangerate-api.com/v6/1613320cb33d3232e8626ef6/pair/" + monedaUno + "/" + monedaDos + "/" + monto;
-        System.out.println("PRUEba");
 
+            String direccion = "https://v6.exchangerate-api.com/v6/1613320cb33d3232e8626ef6/pair/" + monedaUno + "/" + monedaDos + "/" + monto;
+    String json = response.body();
+            System.out.println(json);
+
+        Gson gson = new Gson();
+        Serialized conversionMonto = gson.fromJson(json, Serialized.class);
+
+
+
+
+        System.out.println("La conversión de " + monto + " " + monedaUno + " a " + monedaDos + " sería: " + conversionMonto.conversion_result());
 
 
 
