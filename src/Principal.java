@@ -10,7 +10,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
 
-public class Principal {
+public class Principal extends Estructuras{
     public static void main(String[] args) throws IOException, InterruptedException {
 
 
@@ -45,7 +45,15 @@ public class Principal {
 
 //        System.out.println("La conversión de " + monto + " " + monedaUno + " a " + monedaDos + " sería: " + conversionMonto.conversion_result());
 
-        System.out.println("INFO del Json: " +  respuesta.conversion_rates().EUR());
+        //TAREA:
+        // crear VAR de "respuesta.conversion_rates().CLP()" para facilitar su uso.
+
+
+
+        System.out.println("5 USD es igual a: " + respuesta.conversion_rates().CLP() * 5 + "$ CLP");
+        System.out.println("5000$ CLP es igual a: " + 5000 / respuesta.conversion_rates().CLP() + "$ Dólares" );
+
+        System.out.println(conversionDeMonedas(5000, 5));
 
 
 
