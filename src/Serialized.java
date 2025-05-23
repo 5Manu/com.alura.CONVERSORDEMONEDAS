@@ -1,7 +1,9 @@
-public record Serialized(double conversion_result) {
+public record Serialized(Monedas conversion_rates)  {
 
-    @Override
-    public String toString() {
-        return  Double.toString(conversion_result);
-    }
+//    @Override
+//    public String toString() {
+//        return conversion_rates.toString();
+//    }
 }
+
+
