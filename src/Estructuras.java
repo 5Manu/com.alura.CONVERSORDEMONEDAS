@@ -1,14 +1,15 @@
 
 public class Estructuras {
 
-    public double monedaUSD;
-    public double monedaCLP;
-
-    public static double conversionDeMonedas(double monedaCLP, double monedaUSD){
-       return monedaCLP + monedaUSD;
 
 
+    public static double conversionADivisa(double cantidadExtranjera, double monedaExtranjera){
+       return cantidadExtranjera / monedaExtranjera;}
 
+    public static double divisaAMoneda(double cantidadUSD ,double moneda){
+        return cantidadUSD * moneda;
     }
+
+
 
 }
