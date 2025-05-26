@@ -19,25 +19,74 @@ public class Principal {
 
 
 
-//        System.out.println("Por favor ingresa tu moneda principal");
-//        String monedaUno = scanner.nextLine().toUpperCase();
-//        System.out.println("por favor ingresa tu moneda a convertir");
-//         String monedaDos = scanner.nextLine().toUpperCase();
-//        System.out.println("Por favor ingresa el monto que deseas convertir");
-//        int monto = scanner.nextInt();
+        do {
 
-//        Serialized respuesta = new Serialized();
+            System.out.println("""
+                    *********************************************************
+                    Sea bienvenido/a al Conversor de Moneda =]
+                    
+                    1) Dólar =>> Peso argentino
+                    2) Peso argentino =>> Dólar
+                    3) Dólar =>> Peso chileno
+                    4) Peso chileno =>> Dólar
+                    5) Dólar =>> Peso colombiano
+                    6) Peso colombiano =>> Dólar
+                    7) Salir
+                    Elige una opción válida:
+                    *********************************************************
+                    """);
+
+            int opciones = scanner.nextInt();
+
+            double cantidadMoneda;
+            double cantidadResultado;
+
+            switch (opciones){
+                case 1:
+                    Estructuras.mensajeInicial();
+                    cantidadMoneda = scanner.nextDouble();
+                    cantidadResultado = Estructuras.divisaAMoneda(cantidadMoneda,monedaARS);
+                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"USD", "ARG");
+                    break;
+                case 2:
+                    Estructuras.mensajeInicial();
+                    cantidadMoneda = scanner.nextDouble();
+                    cantidadResultado = Estructuras.conversionADivisa(cantidadMoneda , monedaARS);
+                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"ARG", "USD");
+                    break;
+                case 3:
+                    Estructuras.mensajeInicial();
+                    cantidadMoneda = scanner.nextDouble();
+                    cantidadResultado = Estructuras.divisaAMoneda(cantidadMoneda,monedaCLP );
+                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"USD", "CLP");
+                    break;
+                case 4:
+                    Estructuras.mensajeInicial();
+                    cantidadMoneda = scanner.nextDouble();
+                    cantidadResultado = Estructuras.conversionADivisa(cantidadMoneda, monedaCLP);
+                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"CLP", "USD");
+                    break;
+                case 5:
+                    Estructuras.mensajeInicial();
+                    cantidadMoneda = scanner.nextDouble();
+                    cantidadResultado = Estructuras.divisaAMoneda(cantidadMoneda, monedaCOP);
+                    Estructuras.mensajeFinal(cantidadMoneda,cantidadResultado, "USD", "COP");
+                    break;
+                case 6:
+                    Estructuras.mensajeInicial();
+                    cantidadMoneda = scanner.nextDouble();
+                    cantidadResultado = Estructuras.conversionADivisa(cantidadMoneda, monedaCOP);
+                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado, "COP", "USD");
+                    break;
+                case 7:
+                    break;
+            }
 
 
-        System.out.println("5 USD es igual a: " + monedaCLP * 5 + "$ CLP");
-
-        System.out.println(Estructuras.divisaAMoneda(5, monedaCLP));
-
-        System.out.println("5000$ CLP es igual a: " + 5000 / monedaCLP + "$ Dólares" );
-
-        System.out.println(Estructuras.conversionADivisa(5000, monedaCLP));
 
 
+
+        }
 
     }
 }
