@@ -17,6 +17,18 @@ public class Principal {
         double monedaCLP = moneda.monedaCLP;
         double monedaUSD = moneda.monedaUSD;
 
+        Estructuras prueba = new Estructuras();
+        double seleccionValorMoneda = prueba.seleccionValorMoneda;
+        String seleccionNombreMoneda = prueba.seleccionNombreMoneda;
+
+        int opciones;
+        double cantidadMoneda;
+        double cantidadResultado;
+
+
+
+
+
 
 
         do {
@@ -36,57 +48,62 @@ public class Principal {
                     *********************************************************
                     """);
 
-            int opciones = scanner.nextInt();
+            opciones = scanner.nextInt();
 
-            double cantidadMoneda;
-            double cantidadResultado;
+
+
+            if (opciones == 1 || opciones == 2){
+                seleccionValorMoneda = monedaARS;
+                seleccionNombreMoneda = "ARG";
+            } else if (opciones == 3 || opciones == 4) {
+                seleccionValorMoneda = monedaCLP;
+                seleccionNombreMoneda = "CLP";
+            }else if (opciones == 5 || opciones == 6) {
+                seleccionValorMoneda = monedaCOP;
+                seleccionNombreMoneda = "COP";
+            }
+
+
+            if (opciones == 3 || opciones == 5 ){
+                opciones = 1;
+            } else if (opciones == 4 || opciones == 6) {
+                opciones = 2;
+            }
 
             switch (opciones){
                 case 1:
+
                     Estructuras.mensajeInicial();
                     cantidadMoneda = scanner.nextDouble();
-                    cantidadResultado = Estructuras.divisaAMoneda(cantidadMoneda,monedaARS);
-                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"USD", "ARG");
+                    cantidadResultado = Estructuras.divisaAMoneda(cantidadMoneda,seleccionValorMoneda);
+                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"USD", seleccionNombreMoneda);
                     break;
                 case 2:
                     Estructuras.mensajeInicial();
                     cantidadMoneda = scanner.nextDouble();
-                    cantidadResultado = Estructuras.conversionADivisa(cantidadMoneda , monedaARS);
-                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"ARG", "USD");
-                    break;
-                case 3:
-                    Estructuras.mensajeInicial();
-                    cantidadMoneda = scanner.nextDouble();
-                    cantidadResultado = Estructuras.divisaAMoneda(cantidadMoneda,monedaCLP );
-                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"USD", "CLP");
-                    break;
-                case 4:
-                    Estructuras.mensajeInicial();
-                    cantidadMoneda = scanner.nextDouble();
-                    cantidadResultado = Estructuras.conversionADivisa(cantidadMoneda, monedaCLP);
-                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,"CLP", "USD");
-                    break;
-                case 5:
-                    Estructuras.mensajeInicial();
-                    cantidadMoneda = scanner.nextDouble();
-                    cantidadResultado = Estructuras.divisaAMoneda(cantidadMoneda, monedaCOP);
-                    Estructuras.mensajeFinal(cantidadMoneda,cantidadResultado, "USD", "COP");
-                    break;
-                case 6:
-                    Estructuras.mensajeInicial();
-                    cantidadMoneda = scanner.nextDouble();
-                    cantidadResultado = Estructuras.conversionADivisa(cantidadMoneda, monedaCOP);
-                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado, "COP", "USD");
+                    cantidadResultado = Estructuras.conversionADivisa(cantidadMoneda , seleccionValorMoneda);
+                    Estructuras.mensajeFinal(cantidadMoneda, cantidadResultado,seleccionNombreMoneda, "USD");
                     break;
                 case 7:
                     break;
+                default:
+                    System.out.println("""
+               ****************************************************
+               Seleccione una opción válida.
+               ****************************************************
+                """);
             }
 
-
-
-
-
-        }
+        } while (opciones != 7);
+        System.out.println("""
+                ****************************************************
+                ****************************************************
+                
+                Gracias por usar nuestros servicios!
+                
+                ****************************************************
+                ****************************************************
+                """);
 
     }
 }

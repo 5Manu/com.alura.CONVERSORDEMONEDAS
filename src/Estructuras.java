@@ -4,6 +4,9 @@ public class Estructuras {
 
 
 
+    public double seleccionValorMoneda;
+    String seleccionNombreMoneda;
+
     public static double conversionADivisa(double cantidad, double moneda){
        return cantidad / moneda;}
 
